@@ -81,14 +81,16 @@ class AuthWidget extends StatefulWidget{
       final login = _loginTextColtroller.text;
       final password = _passwordTextColtroller.text;
 
-      if(login == 'admin' && password == 'admin'){
-        errorText = null;
-        print('open app');
-      }else{
-        errorText = 'Неверный логин или пароль';
-      }
-      setState(() {
-      });
+      if (login == 'admin' && password == 'admin') {
+    errorText = null;
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      '/main_screen',
+      (Route<dynamic> route) => false,
+    );
+  } else {
+    errorText = 'Неверный логин или пароль';
+    setState(() {});
+  }
     }
 
     void _resetpassword(){
